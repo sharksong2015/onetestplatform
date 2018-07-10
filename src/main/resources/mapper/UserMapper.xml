@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shl.onetest.mapper.UserMapper">
+    <resultMap id="User" type="com.shl.onetest.domain.User">
+        <id column="USER_ID" jdbcType="DECIMAL" property="userId"/>
+        <result column="USERNAME" jdbcType="VARCHAR" property="username"/>
+        <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+        <result column="DEPT_ID" jdbcType="DECIMAL" property="deptId"/>
+        <result column="EMAIL" jdbcType="VARCHAR" property="email"/>
+        <result column="MOBILE" jdbcType="VARCHAR" property="mobile"/>
+        <result column="STATUS" jdbcType="CHAR" property="status"/>
+        <result column="CRATE_TIME" jdbcType="TIMESTAMP" property="crateTime"/>
+        <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="LAST_LOGIN_TIME" jdbcType="TIMESTAMP" property="lastLoginTime"/>
+        <result column="SEX" jdbcType="CHAR" property="sex"/>
+        <result column="THEME" jdbcType="VARCHAR" property="theme"/>
+        <result column="AVATAR" jdbcType="VARCHAR" property="avatar"/>
+        <result column="DESCRIPTION" jdbcType="VARCHAR" property="description"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+		USER_ID,USERNAME,PASSWORD,DEPT_ID,EMAIL,MOBILE,STATUS,CRATE_TIME,MODIFY_TIME,LAST_LOGIN_TIME,SEX,THEME,AVATAR,DESCRIPTION
+	</sql>
+
+    <select id="findByName" resultMap="User">
+        SELECT
+        <include refid="Base_Column_List" />
+        from t_user
+        where USERNAME=#{userName,jdbcType=VARCHAR}
+    </select>
+
+
+
+
+
+
+</mapper>
