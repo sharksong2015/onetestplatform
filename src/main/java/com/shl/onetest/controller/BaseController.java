@@ -1,6 +1,7 @@
 package com.shl.onetest.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.shl.onetest.domain.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,10 @@ public class BaseController {
         rspData.put("rows", pageInfo.getList());
         rspData.put("total", pageInfo.getTotal());
         return rspData;
+    }
+
+    public User getCurrentUser() {
+        return (User) getSubject().getPrincipal();
     }
 
     public Subject getSubject(){

@@ -1,5 +1,6 @@
 package com.shl.onetest.controller;
 
+import com.shl.onetest.annotation.Log;
 import com.shl.onetest.domain.User;
 import com.shl.onetest.entity.ResponseBo;
 import com.shl.onetest.util.MD5Util;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpSession;
 /**
  * @author songhongli
  **/
+
 @Controller
 public class LoginController {
     private  static Logger logger = LoggerFactory.getLogger(LoginController.class.getName());
@@ -49,12 +51,11 @@ public class LoginController {
             return ResponseBo.warn("验证码错误!");
         }
 
-        //password = MD5Util.encrypt(userName.toLowerCase(), password);
+        password = MD5Util.encrypt(userName.toLowerCase(), password);
         UsernamePasswordToken token = new UsernamePasswordToken(userName, password, rememberMe);
 
         try {
             subject.login(token);
-            ;
             return ResponseBo.ok();
         } catch (UnknownAccountException | IncorrectCredentialsException | LockedAccountException e) {
             return ResponseBo.error(e.getMessage());
@@ -94,11 +95,11 @@ public class LoginController {
         return "403";
     }
 
+    @Log("访问系统")
     @RequestMapping("/index")
     public String index(Model model) {
         Subject subject = SecurityUtils.getSubject();
         User user = (User)subject.getPrincipal();
-        model.addAttribute("user", user);
         model.addAttribute("user", user);
         return "index";
     }

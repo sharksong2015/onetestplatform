@@ -10,12 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-/**
- * @Author : Max.
- * @Created : 2017-08-18
- * @E-mail : goday.max@gmail.com
- * @Version : 1.0
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = OnetestApplication.class)
 public abstract class AbstractSpringTestBase {

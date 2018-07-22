@@ -1,4 +1,4 @@
-package com.shl.onetest.base.testcase;
+package com.shl.onetest.testcase;
 
 import com.shl.onetest.base.AbstractSpringTestBase;
 import com.shl.onetest.domain.User;
